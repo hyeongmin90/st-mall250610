@@ -22,7 +22,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String customer;
+    private String customerId;
 
     private String itemId;
 
@@ -31,6 +31,11 @@ public class Order {
     private String address;
 
     private String status;
+
+    @PrePersist
+    public void onPrePersist(){
+        setStatus("ORDER PLACED");
+    }
 
     @PostPersist
     public void onPostPersist() {

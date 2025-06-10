@@ -45,19 +45,20 @@ public class Inventory {
         stockDecreased.publishAfterCommit();
         */
 
-        /** Example 2:  finding and process
         
 
-        repository().findById(deliveryCompleted.get???()).ifPresent(inventory->{
+        repository().findById(
+            Long.valueOf(deliveryCompleted.getItemid())
+        ).ifPresent(inventory->{
             
-            inventory // do something
+            inventory.setStock(inventory.getStock() - deliveryCompleted.getQty()); // do something
             repository().save(inventory);
 
             StockDecreased stockDecreased = new StockDecreased(inventory);
             stockDecreased.publishAfterCommit();
 
          });
-        */
+
 
     }
 
